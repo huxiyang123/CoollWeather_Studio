@@ -1,5 +1,6 @@
 package com.coolweather.android;
 
+
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Bitmap;
@@ -127,11 +128,13 @@ public class WeatherActivity extends BaseActivity {
 
     private void initView() {
         bingPicImg = ViewUilt.findViewById(activity, R.id.bing_pic_img);
+
         mDrawerLayout = ViewUilt.findViewById(activity, R.id.drawer_layout);
         mNavButton = ViewUilt.findViewById(activity, R.id.nav_home_button);
         swipeRefresh = ViewUilt.findViewById(activity, R.id.swipe_refresh);
         //设置刷新图标的颜色
         swipeRefresh.setColorSchemeResources(R.color.colorPrimary);
+
         weatherLayoutScroll = ViewUilt.findViewById(activity, R.id.weather_layout_scroll);
         titleCity = ViewUilt.findViewById(activity, R.id.title_city);
         titleUpdateTime = ViewUilt.findViewById(activity, R.id.title_update_time);
@@ -172,6 +175,7 @@ public class WeatherActivity extends BaseActivity {
         });
     }
 
+
     public void requestWeather(String weatherId) {
         loadBingPic();
         String weatherUrl = WEATHER_ID_ADDRESS_URL + weatherId + WEATHER_ID_ADDRESS_URL_KEY;
@@ -194,8 +198,7 @@ public class WeatherActivity extends BaseActivity {
                 final String responseText = response.body().string();
                 final Weather weather = Utility.handleWeatherResponse(responseText);
                 LogUtil.d(TAG, "onResponse weather " + (weather == null));
-                runOnUiThread(
-                        new Runnable() {
+                runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
                         if (weather != null

@@ -120,6 +120,10 @@ public class ChooseAreaFragment extends Fragment {
                         weatherActivity.mDrawerLayout.closeDrawers();
                         weatherActivity.swipeRefresh.setRefreshing(true);
                     }
+                    Intent intent = new Intent(mActivity, WeatherActivity.class);
+                    intent.putExtra(WEATHER_ID_INTENT, weatherId);
+                    mActivity.startActivity(intent);
+                    mActivity.finish();
                 }
             }
         });
